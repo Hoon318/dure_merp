@@ -55,7 +55,7 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                 rows: [
                   DataRow(
                       cells: [
-                        DataCell(Text('A1')),
+                        DataCell(Text('A177')),
                         DataCell(Text('B1')),
                         DataCell(Text('A1')),
                         DataCell(Text('B1')),
