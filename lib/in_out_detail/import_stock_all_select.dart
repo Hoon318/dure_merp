@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart';
 
-import 'Import_stock_select.dart';
 
 
 
@@ -57,7 +56,7 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                       cells: [
                         DataCell(Text('A177')),
                         DataCell(Text('B1')),
-                        DataCell(Text('A1')),
+                        DataCell(Text('A111')),
                         DataCell(Text('B1')),
                         DataCell(Text('A1')),
                         DataCell(Text('B1')),
