@@ -71,13 +71,55 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
           //SizedBox(child: Text('${f_full_data}'[1]),), // 받아온값에서 왼쪽 기준 몇번째 문자 한개출력
           //SizedBox(child: Text(list[2])), // 받아온 값이 리스트에 저장되어 몇번째 인덱스에 있는지 출력
 
+          // 재고실사리스트 출력시 선택매장 표시 (왼쪽 정렬을 위해 align 추가)
+          Align(child: SizedBox(child: Text(' 매장 : ' + list[1]),), alignment: Alignment.centerLeft,),
+
           // 위에서 가져온 dart 네트워크 데이터 출력
           FutureBuilder<Post>(
           future: post,
           builder: (context, snapshot) {
           if (snapshot.hasData) {
+          return
             // json 파일을 보면 "title": 이부분 뒤에 있는 내용을 출력하게 해준다.
-          return Text(snapshot.data!.body);
+            //Text(snapshot.data!.body);
+
+            // 조회를 위한 테이블 화면상 가로세로 스크롤을 위해 SingleChildScrollView, scrollDirection: Axis.horizontal 추가
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  // 컬럼에 색추가를 위한 작업
+                  headingRowColor: MaterialStateColor.resolveWith((states) => Colors.lightBlue),
+
+                  // 컬럼 생성
+                  columns: [
+                    DataColumn(label: Text('생활재'),),
+                    DataColumn(label: Text('실재고')),
+                    DataColumn(label: Text('실사재고')),
+                    DataColumn(label: Text('실사수량')),
+                  ],
+
+                  // 로우데이터 생성
+                  rows: [
+                    DataRow(
+                        cells: [
+                          // json 파일을 보면 "title": 이부분 뒤에 있는 내용을 출력하게 해준다. 인트값은 tostring 붙여서 형변환해줘야한다.
+                          DataCell(Text(snapshot.data!.userId.toString())),
+                          DataCell(Text(snapshot.data!.id.toString())),
+                          DataCell(Text(snapshot.data!.title)),
+                          DataCell(Text(snapshot.data!.body)),
+                        ]
+                    ),
+                    DataRow(
+                        cells: [
+                          DataCell(Text('A2')),
+                          DataCell(Text('B2')),
+                          DataCell(Text('A1')),
+                          DataCell(Text('B1')),
+                        ]
+                    ),
+                  ],
+                )
+            );
           } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
           }
@@ -85,72 +127,6 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
           // 기본적으로 로딩 Spinner를 보여줍니다.
           return CircularProgressIndicator();
           },
-          ),
-
-
-          // 재고실사리스트 출력시 선택매장 표시 (왼쪽 정렬을 위해 align 추가)
-          Align(child: SizedBox(child: Text(' 매장 : ' + list[1]),), alignment: Alignment.centerLeft,),
-
-          // 조회를 위한 테이블 화면상 가로세로 스크롤을 위해 SingleChildScrollView, scrollDirection: Axis.horizontal 추가
-          SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                // 컬럼에 색추가를 위한 작업
-                headingRowColor: MaterialStateColor.resolveWith((states) => Colors.lightBlue),
-
-                // 컬럼 생성
-                columns: [
-                  DataColumn(label: Text('생활재'),),
-                  DataColumn(label: Text('실재고')),
-                  DataColumn(label: Text('실사재고')),
-                  DataColumn(label: Text('실사수량')),
-                  DataColumn(label: Text('차이수량')),
-                  DataColumn(label: Text('원가')),
-                  DataColumn(label: Text('부가세')),
-                  DataColumn(label: Text('폐기사유')),
-                  DataColumn(label: Text('비고')),
-                  DataColumn(label: Text('실사일자')),
-                  DataColumn(label: Text('재고반영')),
-                  DataColumn(label: Text('반영일자')),
-                ],
-
-                // 로우데이터 생성
-                rows: [
-                  DataRow(
-                      cells: [
-                        DataCell(Text('A177')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A111')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                      ]
-                  ),
-                  DataRow(
-                      cells: [
-                        DataCell(Text('A2')),
-                        DataCell(Text('B2')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-                        DataCell(Text('A1')),
-                        DataCell(Text('B1')),
-
-                      ]
-                  ),
-                ],
-              )
           ),
 
         ],
