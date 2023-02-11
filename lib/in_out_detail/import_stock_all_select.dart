@@ -76,7 +76,8 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
           future: post,
           builder: (context, snapshot) {
           if (snapshot.hasData) {
-          return Text(snapshot.data!.title);
+            // json 파일을 보면 "title": 이부분 뒤에 있는 내용을 출력하게 해준다.
+          return Text(snapshot.data!.body);
           } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
           }
