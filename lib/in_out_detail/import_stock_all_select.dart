@@ -25,7 +25,6 @@ class Post {
   final int name;
   final int photo;
 
-
   Post({required this.name, required this.photo});
 
   factory Post.fromJson(Map<String, dynamic> json) {
@@ -104,8 +103,8 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                     ),
                     DataRow(
                         cells: [
-                          DataCell(Text('A2')),
-                          DataCell(Text('B2')),
+                          DataCell(Text(snapshot.data!.name.toString())),
+                          DataCell(Text(snapshot.data!.photo.toString())),
                         ]
                     ),
                   ],
