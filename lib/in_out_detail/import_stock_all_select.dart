@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 Future<Post> fetchPost() async {
   // 네트워크 요청하기
-  String url = 'https://jsonplaceholder.typicode.com/posts/1';
+  String url = 'https://raw.githubusercontent.com/dev-yakuza/users/master/api.json';
   final response = await http.get(Uri.parse(url));
 
   // 네트워크 연결 되었는지 여부 확인
@@ -22,19 +22,16 @@ Future<Post> fetchPost() async {
 
 // 위 네트워크 요청으로 받아온 json 파일을 dart 문법으로 변환하기
 class Post {
-  final int userId;
-  final int id;
-  final String title;
-  final String body;
+  final int name;
+  final int photo;
 
-  Post({required this.userId, required this.id, required this.title, required this.body});
+
+  Post({required this.name, required this.photo});
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-      body: json['body'],
+      name: json['name'],
+      photo: json['photo'],
     );
   }
 }
@@ -103,10 +100,8 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                     DataRow(
                         cells: [
                           // json 파일을 보면 "title": 이부분 뒤에 있는 내용을 출력하게 해준다. 인트값은 tostring 붙여서 형변환해줘야한다.
-                          DataCell(Text(snapshot.data!.userId.toString())),
-                          DataCell(Text(snapshot.data!.id.toString())),
-                          DataCell(Text(snapshot.data!.title)),
-                          DataCell(Text(snapshot.data!.body)),
+                          DataCell(Text(snapshot.data!.name.toString())),
+                          DataCell(Text(snapshot.data!.photo.toString())),
                         ]
                     ),
                     DataRow(
