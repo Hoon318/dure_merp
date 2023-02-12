@@ -105,16 +105,16 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                           // json 파일을 보면 "title": 이부분 뒤에 있는 내용을 출력하게 해준다. 인트값은 tostring 붙여서 형변환해줘야한다.
                           DataCell(Text(snapshot.data!.userId.toString())),
                           DataCell(Text(snapshot.data!.id.toString())),
-                          DataCell(Text(snapshot.data!.title.toString())),
-                          DataCell(Text(snapshot.data!.body.toString())),
+                          DataCell(Text(snapshot.data!.title)),
+                          DataCell(Text(snapshot.data!.body)),
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text(snapshot.data!.userId.toString())),
                           DataCell(Text(snapshot.data!.id.toString())),
-                          DataCell(Text(snapshot.data!.title.toString())),
-                          DataCell(Text(snapshot.data!.body.toString())),
+                          DataCell(Text(snapshot.data!.title)),
+                          DataCell(Text(snapshot.data!.body)),
                         ]
                     ),
                   ],
