@@ -106,8 +106,6 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                         cells: [
                           DataCell(Text('A2')),
                           DataCell(Text('B2')),
-                          DataCell(Text('A1')),
-                          DataCell(Text('B1')),
                         ]
                     ),
                   ],
