@@ -91,8 +91,6 @@ class _import_stock_all_selectState extends State<import_stock_all_select> {
                   columns: [
                     DataColumn(label: Text('생활재'),),
                     DataColumn(label: Text('실재고')),
-                    DataColumn(label: Text('실사재고')),
-                    DataColumn(label: Text('실사수량')),
                   ],
 
                   // 로우데이터 생성
